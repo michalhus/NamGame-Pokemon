@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E305F0F024780A0100D32AA0 /* azure-pipelines.yml in Resources */ = {isa = PBXBuildFile; fileRef = E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */; };
 		E31981632472CA43003B2C2E /* TimeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31981622472CA43003B2C2E /* TimeMode.swift */; };
 		E31981652472CFF9003B2C2E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */; };
 		E34B34F42470241E00B7A0D8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B34F32470241E00B7A0D8 /* Networking.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "azure-pipelines.yml"; sourceTree = "<group>"; };
 		E31981622472CA43003B2C2E /* TimeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMode.swift; sourceTree = "<group>"; };
 		E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E34B34F32470241E00B7A0D8 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				E367F56B246F199C00E79B28 /* Name GameTests */,
 				E367F576246F199C00E79B28 /* Name GameUITests */,
 				E367F550246F199A00E79B28 /* Products */,
+				E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -279,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E305F0F024780A0100D32AA0 /* azure-pipelines.yml in Resources */,
 				E367F562246F199C00E79B28 /* LaunchScreen.storyboard in Resources */,
 				E367F55F246F199C00E79B28 /* Assets.xcassets in Resources */,
 				E367F55A246F199A00E79B28 /* Main.storyboard in Resources */,
