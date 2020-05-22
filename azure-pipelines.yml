@@ -10,10 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
+- script: echo Changes are comming!
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
+    echo 2nd Script Updated inv Xcode.
+    echo Testing if PR will update xmal and affect pipeline accordingly.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
