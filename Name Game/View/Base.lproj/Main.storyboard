@@ -37,10 +37,12 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="m0B-MJ-sB6">
                                         <rect key="frame" x="0.0" y="0.0" width="278" height="271"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="homeImage"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rad-nX-6dx" userLabel="Practice Mode">
                                         <rect key="frame" x="0.0" y="282" width="278" height="36"/>
                                         <color key="backgroundColor" red="0.27096026620000002" green="0.56256585079999999" blue="0.77438927660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="practiceMode"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Practice Mode">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,6 +54,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHw-iO-ooP" userLabel="Time Mode">
                                         <rect key="frame" x="0.0" y="329" width="278" height="36"/>
                                         <color key="backgroundColor" red="0.27096026620000002" green="0.56256585079999999" blue="0.77438927660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="timeMode"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Time Mode">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,6 +73,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.2054922283" green="0.34602990750000001" blue="0.49413824080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration" identifier="homeView"/>
                         <constraints>
                             <constraint firstItem="0KQ-S1-lfq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cs2-DW-mqv"/>
                             <constraint firstItem="0KQ-S1-lfq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="uTW-MR-uYK"/>
