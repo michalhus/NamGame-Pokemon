@@ -29,7 +29,8 @@ variables:
   sdk: 'iphoneos'
   projectName: $(name).xcodeproj
   configuration: 'Release'
-  testScheme: 'Name GameUITests'
+  testUIScheme: 'Name GameUITests'
+  unitTestScheme: 'Name GameTests'
 
 steps:
 - task: Xcode@5
@@ -44,68 +45,31 @@ steps:
     packageApp: false
     useXcpretty: 'false' # Makes it easier to diagnose build failures
 
+- task: Xcode@5
+  displayName: 'UI Tests'
+  inputs:
+  #https://jayeshkawli.ghost.io/running-ui-tests-from-command-line/
+    actions: test # -only-testing:Mastercard-iOSTests where Mastercard-iOSTests is <Specific Test Suite or Test Bundle>
+    configuration: Debug
+    sdk: $(sdk)
+    scheme: $(testUIScheme)
+    xcodeVersion: 'default'
+    useXcpretty: true
+    destinationPlatformOption: iOS
+    destinationSimulators: 'iPhone 11'
+    publishJUnitResults: true
+    xcWorkspacePath: $(projectName)
 
-#WIP
-#- task: Xcode@5
-#  displayName: 'UI Tests'
-#  inputs:
-#    actions: test -only-testing:NameGameUITests
-#    configuration: Debug
-#    sdk: $(sdk)
-#    scheme: $(scheme)
-#    xcodeVersion: 'default'
-#    useXcpretty: true
-#    destinationPlatformOption: iOS
-#    destinationSimulators: 'iPhone 11'
-#    publishJUnitResults: true
-#    xcWorkspacePath: $(projectName)
-#
-#
-
-
-
-#- task: Xcode@5
-#  displayName: Project Build
-#  inputs:
-#    actions: 'build'
-#    scheme: ''
-#    sdk: 'iphoneos'
-#    configuration: 'Release'
-#    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-#    xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
-#    signingOption: 'default' # Options: nosign, default, manual, auto
-#    useXcpretty: 'false' # Makes it easier to diagnose build failures
-
-        
-##jobs:
-##- ${{ each config in parameters.configs }}:
-##  - job: Build${{ config }}
-#    displayName: Project Build
-#    steps:
-##      - task: Xcode@5
-##        displayName: Unit Tests
-##        inputs:
-##          actions: test -only-testing:Mastercard-iOSTests
-##          configuration: Debug
-##          sdk: $(sdk)
-##          scheme: $(scheme)
-##          xcodeVersion: 'default'
-##          useXcpretty: true
-##          destinationPlatformOption: iOS
-##          destinationSimulators: 'iPhone 11'
-##          publishJUnitResults: true
-##          xcWorkspacePath: $(projectName)
-#
-#      - task: Xcode@5
-#        displayName: UI Tests
-#        inputs:
-#          actions: test -only-testing:Name GameUITests
-#          configuration: Debug
-#          sdk: $(sdk)
-#          scheme: $(scheme)
-#          xcodeVersion: 'default'
-#          useXcpretty: true
-#          destinationPlatformOption: iOS
-#          destinationSimulators: 'iPhone 11'
-#          publishJUnitResults: true
-#          xcWorkspacePath: $(projectName)
+- task: Xcode@5
+  displayName: Unit Tests
+  inputs:
+    actions: test #-only-testing: <NAME of Test bundle ?>
+    configuration: Debug
+    sdk: $(sdk)
+    scheme: $(unitTestScheme)
+    xcodeVersion: 'default'
+    useXcpretty: true
+    destinationPlatformOption: iOS
+    destinationSimulators: 'iPhone 11'
+    publishJUnitResults: true
+    xcWorkspacePath: $(projectName)

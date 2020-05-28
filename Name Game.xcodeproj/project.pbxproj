@@ -133,8 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				E367F551246F199A00E79B28 /* Name Game */,
-				E367F56B246F199C00E79B28 /* NameGameTests */,
-				E367F576246F199C00E79B28 /* NameGameUITests */,
+				E367F56B246F199C00E79B28 /* Name GameTests */,
+				E367F576246F199C00E79B28 /* Name GameUITests */,
 				E367F550246F199A00E79B28 /* Products */,
 				E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */,
 			);
@@ -163,23 +163,23 @@
 			path = "Name Game";
 			sourceTree = "<group>";
 		};
-		E367F56B246F199C00E79B28 /* NameGameTests */ = {
+		E367F56B246F199C00E79B28 /* Name GameTests */ = {
 			isa = PBXGroup;
 			children = (
 				E367F56C246F199C00E79B28 /* Name_GameTests.swift */,
 				E367F56E246F199C00E79B28 /* Info.plist */,
 			);
-			path = NameGameTests;
+			path = "Name GameTests";
 			sourceTree = "<group>";
 		};
-		E367F576246F199C00E79B28 /* NameGameUITests */ = {
+		E367F576246F199C00E79B28 /* Name GameUITests */ = {
 			isa = PBXGroup;
 			children = (
 				E30CDA2F247EA31B0029CC1E /* Screens */,
 				E30CDA2C247EA2F80029CC1E /* Tests */,
 				E367F579246F199C00E79B28 /* Info.plist */,
 			);
-			path = NameGameUITests;
+			path = "Name GameUITests";
 			sourceTree = "<group>";
 		};
 		E367F585246F19C500E79B28 /* View */ = {
