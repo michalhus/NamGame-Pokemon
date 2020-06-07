@@ -8,24 +8,61 @@
 
 import UIKit
 
+protocol ErrorProtocol: class {
+    func errorModal(errorMessage: String)
+}
+
 class TreeCell: UICollectionViewCell {
+    weak var error: ErrorProtocol?
     var pictureData: Data?
+    var loadingIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var treeImage: UIImageView!
     
-    func downloadImage(from url: URL, imageSize: CGSize) {
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() { [weak self] in
-                guard let image = UIImage(data: data) else { return }
-                self?.imageScalling(imageSize: imageSize, treeImage: image, overlayImage: nil)
-                self?.pictureData = data
-            }
+    func activityIndicator() {
+        loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
+        loadingIndicator.center = self.treeImage.center
+        self.treeImage.addSubview(loadingIndicator)
+    }
+    
+    func isLoading(_ indicator: Bool) {
+        if indicator {
+            self.activityIndicator()
+            loadingIndicator.startAnimating()
+            loadingIndicator.backgroundColor = .white
+        } else {
+            loadingIndicator.stopAnimating()
+            loadingIndicator.hidesWhenStopped = true
         }
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    func downloadImage(from url: URL, imageSize: CGSize) {
+        
+        let session = URLSession(configuration: .default)
+  
+        let downloadPicTask = session.dataTask(with: url) { (data, response, error) in
+            if let e = error {
+                print("Error downloading a picture: \(e)")
+//                self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
+            } else {
+                if let res = response as? HTTPURLResponse {
+                    print("Downloaded picture with response code \(res.statusCode)")
+                    if let imageData = data {
+                        DispatchQueue.main.async() {
+                            guard let image = UIImage(data: imageData) else { return }
+                            self.imageScalling(imageSize: imageSize, treeImage: image, overlayImage: nil)
+                            self.pictureData = data
+                        }
+                    } else {
+                        print("Couldn't get image: Image is nil")
+                    }
+                } else {
+                    print("Couldn't get response code for some reason")
+                }
+            }
+        }
+        downloadPicTask.resume()
     }
     
     func updateImageGuess(imageSize: CGSize, correctGuess: Bool = true) {
@@ -43,7 +80,8 @@ class TreeCell: UICollectionViewCell {
         }
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
+        self.isLoading(false)
         self.treeImage.image = scaledImage
     }
    

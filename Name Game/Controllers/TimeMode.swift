@@ -90,6 +90,8 @@ extension TimeMode: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TreeCell
         let pokemon = pokemons[(indexPath as NSIndexPath).row]
         
+        cell.isLoading(true)
+
         var array = pokemon.url.components(separatedBy: "/")
         array.removeLast()
         if let id = array.last {

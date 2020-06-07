@@ -67,10 +67,11 @@ extension PracticeMode: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PracticeCell", for: indexPath) as! TreeCell
         let pokemon = pokemons[(indexPath as NSIndexPath).row]
         
+        cell.isLoading(true)
+
         var array = pokemon.url.components(separatedBy: "/")
         array.removeLast()
         if let id = array.last {
-            
             cell.downloadImage(from: URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(id).png")!, imageSize: imageSize)
         }
         
