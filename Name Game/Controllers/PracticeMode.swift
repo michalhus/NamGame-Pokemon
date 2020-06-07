@@ -12,7 +12,7 @@ class PracticeMode: UIViewController {
 
     var cellViewSize: CGFloat = 0
     var imageSize: CGSize = CGSize(width: 0, height: 0)
-    var trees: [Tree] = []
+    var pokemons: [Pokemon] = []
     var randomTargetIndex: Int = 0
     var score: Int = 0
     private let itemsPerRow: CGFloat = 2
@@ -30,12 +30,12 @@ class PracticeMode: UIViewController {
         collectionView.dataSource = self
         targetName.isHidden = true
         
-        Networking.getTrees { (response, error) in
+        Networking.getPokemons { (response, error) in
             guard let response = response, error == nil else {
                 self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
                 return
             }
-            self.trees = response
+            self.pokemons = response
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.randomTarget()
@@ -49,8 +49,8 @@ class PracticeMode: UIViewController {
     }
     
     func randomTarget() {
-        let randomTarget = Int.random(in: 0 ..< trees.count)
-        self.targetName.text = "\(trees[randomTarget].firstName) \(trees[randomTarget].lastName)"
+        let randomTarget = Int.random(in: 0 ..< pokemons.count)
+        self.targetName.text = pokemons[randomTarget].name
         self.targetName.isHidden = false
         randomTargetIndex = randomTarget
     }
@@ -59,15 +59,21 @@ class PracticeMode: UIViewController {
 extension PracticeMode: UICollectionViewDataSource{
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trees.count
+        return pokemons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PracticeCell", for: indexPath) as! TreeCell
-        let tree = trees[(indexPath as NSIndexPath).row]
-        cell.downloadImage(from: URL(string: "https:\(tree.headshot.url ?? "")")!, imageSize: imageSize)
-
+        let pokemon = pokemons[(indexPath as NSIndexPath).row]
+        
+        var array = pokemon.url.components(separatedBy: "/")
+        array.removeLast()
+        if let id = array.last {
+            
+            cell.downloadImage(from: URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(id).png")!, imageSize: imageSize)
+        }
+        
         return cell
     }
     
@@ -78,12 +84,12 @@ extension PracticeMode: UICollectionViewDataSource{
             cell.updateImageGuess(imageSize: imageSize)
             score += 1
             
-            Networking.getTrees { (response, error) in
+            Networking.getPokemons { (response, error) in
                 guard let response = response, error == nil else {
                     self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
                     return
                 }
-                self.trees = response
+                self.pokemons = response
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.randomTarget()

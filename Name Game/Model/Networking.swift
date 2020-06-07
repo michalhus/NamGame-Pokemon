@@ -9,9 +9,9 @@
 import Foundation
 
 class Networking {
-    
-    class func getTrees(completion: @escaping ([Tree]?, String?) -> ()){
-        let urlString = "https://willowtreeapps.com/api/v1.0/profiles/"
+
+    class func getPokemons(completion: @escaping ([Pokemon]?, String?) -> ()){
+        let urlString = "https://pokeapi.co/api/v2/generation/1"
         let url = URL(string: urlString)
         
         _ = URLSession.shared.dataTask(with: url!) { (data, response, error) in
@@ -27,11 +27,10 @@ class Networking {
             }
             
             let decoder = JSONDecoder()
-            let treesResponse = try! decoder.decode([Tree].self, from: data)
+            let endpointResponse = try! decoder.decode(GenerationOnePokemons.self, from: data)
             DispatchQueue.main.async {
-                let filteredTreesResponse = treesResponse.filter { $0.headshot.url != nil }
-                let randomTreeSubSet = Array(filteredTreesResponse.shuffled().prefix(6))
-                completion(randomTreeSubSet, nil)
+                let randomPokemonsSubSet = Array(endpointResponse.pokemon_species.shuffled().prefix(6))
+                completion(randomPokemonsSubSet, nil)
             }
         }.resume()
     }

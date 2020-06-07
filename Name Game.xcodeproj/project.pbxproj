@@ -10,7 +10,6 @@
 		E31981632472CA43003B2C2E /* TimeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31981622472CA43003B2C2E /* TimeMode.swift */; };
 		E31981652472CFF9003B2C2E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */; };
 		E34B34F42470241E00B7A0D8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B34F32470241E00B7A0D8 /* Networking.swift */; };
-		E34B34F7247024A400B7A0D8 /* TreeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B34F6247024A400B7A0D8 /* TreeResponse.swift */; };
 		E35C5B55247006FB00472476 /* TreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35C5B54247006FB00472476 /* TreeCell.swift */; };
 		E367F553246F199A00E79B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367F552246F199A00E79B28 /* AppDelegate.swift */; };
 		E367F555246F199A00E79B28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367F554246F199A00E79B28 /* SceneDelegate.swift */; };
@@ -18,6 +17,7 @@
 		E367F55A246F199A00E79B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E367F558246F199A00E79B28 /* Main.storyboard */; };
 		E367F55F246F199C00E79B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E367F55E246F199C00E79B28 /* Assets.xcassets */; };
 		E367F562246F199C00E79B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E367F560246F199C00E79B28 /* LaunchScreen.storyboard */; };
+		E3CBB122248D0C8600D08777 /* GenerationOnePokemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,6 @@
 		E31981622472CA43003B2C2E /* TimeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMode.swift; sourceTree = "<group>"; };
 		E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E34B34F32470241E00B7A0D8 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		E34B34F6247024A400B7A0D8 /* TreeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeResponse.swift; sourceTree = "<group>"; };
 		E35C5B54247006FB00472476 /* TreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeCell.swift; sourceTree = "<group>"; };
 		E367F54F246F199A00E79B28 /* Name Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Name Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E367F552246F199A00E79B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		E367F563246F199C00E79B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E367F568246F199C00E79B28 /* Name GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Name GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E367F573246F199C00E79B28 /* Name GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Name GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationOnePokemons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				E34B34F32470241E00B7A0D8 /* Networking.swift */,
-				E34B34F6247024A400B7A0D8 /* TreeResponse.swift */,
+				E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,11 +282,11 @@
 			files = (
 				E367F557246F199A00E79B28 /* PracticeMode.swift in Sources */,
 				E34B34F42470241E00B7A0D8 /* Networking.swift in Sources */,
+				E3CBB122248D0C8600D08777 /* GenerationOnePokemons.swift in Sources */,
 				E31981632472CA43003B2C2E /* TimeMode.swift in Sources */,
 				E35C5B55247006FB00472476 /* TreeCell.swift in Sources */,
 				E367F553246F199A00E79B28 /* AppDelegate.swift in Sources */,
 				E31981652472CFF9003B2C2E /* UIViewController+Extension.swift in Sources */,
-				E34B34F7247024A400B7A0D8 /* TreeResponse.swift in Sources */,
 				E367F555246F199A00E79B28 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
