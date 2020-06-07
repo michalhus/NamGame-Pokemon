@@ -18,6 +18,8 @@
 		E367F55F246F199C00E79B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E367F55E246F199C00E79B28 /* Assets.xcassets */; };
 		E367F562246F199C00E79B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E367F560246F199C00E79B28 /* LaunchScreen.storyboard */; };
 		E3CBB122248D0C8600D08777 /* GenerationOnePokemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */; };
+		E3CBB125248D4E3400D08777 /* pokemon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3CBB123248D4E3400D08777 /* pokemon.xcdatamodeld */; };
+		E3CBB127248D4EF200D08777 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CBB126248D4EF200D08777 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		E367F568246F199C00E79B28 /* Name GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Name GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E367F573246F199C00E79B28 /* Name GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Name GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationOnePokemons.swift; sourceTree = "<group>"; };
+		E3CBB124248D4E3400D08777 /* pokemon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pokemon.xcdatamodel; sourceTree = "<group>"; };
+		E3CBB126248D4EF200D08777 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +87,9 @@
 		E34B34F52470242300B7A0D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E34B34F32470241E00B7A0D8 /* Networking.swift */,
-				E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */,
+				E3CBB128248D4F1900D08777 /* Networking */,
+				E3CBB123248D4E3400D08777 /* pokemon.xcdatamodeld */,
+				E3CBB126248D4EF200D08777 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +152,15 @@
 				E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E3CBB128248D4F1900D08777 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E34B34F32470241E00B7A0D8 /* Networking.swift */,
+				E3CBB121248D0C8600D08777 /* GenerationOnePokemons.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,8 +296,10 @@
 			files = (
 				E367F557246F199A00E79B28 /* PracticeMode.swift in Sources */,
 				E34B34F42470241E00B7A0D8 /* Networking.swift in Sources */,
+				E3CBB125248D4E3400D08777 /* pokemon.xcdatamodeld in Sources */,
 				E3CBB122248D0C8600D08777 /* GenerationOnePokemons.swift in Sources */,
 				E31981632472CA43003B2C2E /* TimeMode.swift in Sources */,
+				E3CBB127248D4EF200D08777 /* DataController.swift in Sources */,
 				E35C5B55247006FB00472476 /* TreeCell.swift in Sources */,
 				E367F553246F199A00E79B28 /* AppDelegate.swift in Sources */,
 				E31981652472CFF9003B2C2E /* UIViewController+Extension.swift in Sources */,
@@ -608,6 +624,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E3CBB123248D4E3400D08777 /* pokemon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E3CBB124248D4E3400D08777 /* pokemon.xcdatamodel */,
+			);
+			currentVersion = E3CBB124248D4E3400D08777 /* pokemon.xcdatamodel */;
+			path = pokemon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E367F547246F199A00E79B28 /* Project object */;
 }

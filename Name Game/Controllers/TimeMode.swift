@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
-class TimeMode: UIViewController {
+class TimeMode: UIViewController, NSFetchedResultsControllerDelegate {
 
     var cellViewSize: CGFloat = 0
     var imageSize: CGSize = CGSize(width: 0, height: 0)
     var timer:Timer?
     var timeLeft = 60
+    
+    var fetchedResultsController: NSFetchedResultsController<Pokemon>!
+    var imageReset: Bool = false
 
-    var pokemons:[Pokemon] = []
+
+    var pokemons: [Pokemon] = []
     var randomTargetIndex: Int = 0
     var score: Int = 0
 
@@ -40,18 +45,8 @@ class TimeMode: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         targetName.isHidden = true
-
-        Networking.getPokemons { (response, error) in
-            guard let response = response, error == nil else {
-                self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
-                return
-            }
-            self.pokemons = response
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.randomTarget()
-            }
-        }
+        loadData()
+        
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.onTimerFires), userInfo: nil, repeats: true)
     }
 
@@ -59,14 +54,7 @@ class TimeMode: UIViewController {
         super.viewWillAppear(animated)
         collectionView.reloadData()
     }
-
-    func randomTarget() {
-        let randomTarget = Int.random(in: 0 ..< pokemons.count)
-        self.targetName.text = pokemons[randomTarget].name
-        self.targetName.isHidden = false
-        randomTargetIndex = randomTarget
-    }
-
+    
     @objc func onTimerFires()
     {
         timeLeft -= 1
@@ -74,8 +62,106 @@ class TimeMode: UIViewController {
         if timeLeft <= 0 {
             timer?.invalidate()
             timer = nil
+            deleteAllData()
             self.errorAlertMessage(title: "Game Over!", message: "Scored: \(score)", isGameOver: true)
         }
+    }
+    
+    // MARK: Data Loading
+    func loadData() {
+        if let picFromCoreData = reloadSavedData() {
+            pokemons = picFromCoreData
+            if (pokemons.isEmpty) {
+                getPokemonsRandomSet()
+            } else {
+                getTargetPokemonName()
+            }
+        }
+    }
+    
+    func getTargetPokemonName() {
+        for (id, pokemon) in pokemons.enumerated() {
+            if pokemon.targetPokemon {
+                self.randomTargetIndex = id
+                self.targetName.text = pokemon.pokemonName
+                self.targetName.isHidden = false
+            }
+        }
+        self.collectionView.reloadData()
+    }
+    
+    // MARK: Core Data Fetching
+
+     fileprivate func reloadSavedData() -> [Pokemon]? {
+         self.imageReset = false
+         var photos: [Pokemon] = []
+             let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
+             let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+             fetchRequest.sortDescriptors = [sortDescriptor]
+
+             fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+             fetchedResultsController.delegate = self
+
+         do {
+             try fetchedResultsController.performFetch()
+             let photoCount = try fetchedResultsController.managedObjectContext.count(for: fetchedResultsController.fetchRequest)
+
+             for index in 0..<photoCount {
+                 photos.append(fetchedResultsController.object(at: IndexPath(row: index, section: 0)))
+             }
+             return photos
+
+         } catch {
+             print("error performing fetch")
+             return nil
+         }
+     }
+
+    // MARK: CORE DATA AND COLLECTION VIEW'S ARRAY CLEAN UP
+    func deleteAllData() {
+        for pokemon in pokemons {
+            DataController.shared.viewContext.delete(pokemon)
+            DataController.shared.saveContext()
+        }
+        pokemons.removeAll()
+        self.imageReset = true
+    }
+    
+    // MARK: Fetching API Responses
+    func getPokemonsRandomSet() {
+        _ = Networking.getPokemons { (response, error) in
+             guard let response = response, error == nil else {
+                 self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
+                 return
+            }
+
+            self.randomTargetIndex = Int.random(in: 0 ..< response.count)
+        
+            for (id, pokemon) in response.enumerated() {
+                var array = pokemon.url.components(separatedBy: "/")
+                array.removeLast()
+                
+                let photoCoreData = Pokemon(context: DataController.shared.viewContext)
+                
+                photoCoreData.pokemonName = pokemon.name
+                if let id = array.last {
+                    photoCoreData.pokemonURL = "https://pokeres.bastionbot.org/images/pokemon/\(id).png"
+                }
+                if (id == self.randomTargetIndex) {
+                    photoCoreData.targetPokemon = true
+                } else {
+                    photoCoreData.targetPokemon = false
+                }
+
+                photoCoreData.creationDate = Date()
+                self.pokemons.append(photoCoreData)
+                DataController.shared.saveContext()
+            }
+            
+             DispatchQueue.main.async {
+                self.getTargetPokemonName()
+             }
+         }
     }
 }
 
@@ -89,14 +175,15 @@ extension TimeMode: UICollectionViewDataSource{
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TreeCell
         let pokemon = pokemons[(indexPath as NSIndexPath).row]
-        
+       
         cell.isLoading(true)
 
-        var array = pokemon.url.components(separatedBy: "/")
-        array.removeLast()
-        if let id = array.last {
-            
-            cell.downloadImage(from: URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(id).png")!, imageSize: imageSize)
+        if imageReset {
+            cell.treeImage.image = nil
+        }
+                
+        if let imageURL = pokemon.pokemonURL, let url = URL(string: imageURL) {
+            cell.downloadImage(from: url, imageSize: imageSize)
         }
         
         return cell
@@ -108,18 +195,10 @@ extension TimeMode: UICollectionViewDataSource{
 
             cell.updateImageGuess(imageSize: imageSize)
             score += 1
-
-            Networking.getPokemons { (response, error) in
-                guard let response = response, error == nil else {
-                    self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
-                    return
-                }
-                self.pokemons = response
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.randomTarget()
-                }
-            }
+            
+            deleteAllData()
+            getPokemonsRandomSet()
+            
         } else {
             cell.updateImageGuess(imageSize: imageSize, correctGuess: false)
         }

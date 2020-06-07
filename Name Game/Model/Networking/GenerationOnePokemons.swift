@@ -7,10 +7,10 @@
 //
 
 struct GenerationOnePokemons: Codable {
-    let pokemon_species: [Pokemon]
+    let pokemon_species: [Poke]
 }
 
-struct Pokemon: Codable {
+struct Poke: Codable {
     let name: String
     let url: String
 }

@@ -8,12 +8,8 @@
 
 import UIKit
 
-protocol ErrorProtocol: class {
-    func errorModal(errorMessage: String)
-}
-
 class TreeCell: UICollectionViewCell {
-    weak var error: ErrorProtocol?
+    
     var pictureData: Data?
     var loadingIndicator = UIActivityIndicatorView()
     
@@ -43,8 +39,7 @@ class TreeCell: UICollectionViewCell {
   
         let downloadPicTask = session.dataTask(with: url) { (data, response, error) in
             if let e = error {
-                print("Error downloading a picture: \(e)")
-//                self.errorAlertMessage(title: "Network Error", message: error ?? "Please Try Again Later")
+                print("Error downloading a picture: \(e.localizedDescription)")
             } else {
                 if let res = response as? HTTPURLResponse {
                     print("Downloaded picture with response code \(res.statusCode)")

@@ -10,7 +10,7 @@ import Foundation
 
 class Networking {
 
-    class func getPokemons(completion: @escaping ([Pokemon]?, String?) -> ()){
+    class func getPokemons(completion: @escaping ([Poke]?, String?) -> ()){
         let urlString = "https://pokeapi.co/api/v2/generation/1"
         let url = URL(string: urlString)
         

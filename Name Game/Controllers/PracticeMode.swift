@@ -12,7 +12,7 @@ class PracticeMode: UIViewController {
 
     var cellViewSize: CGFloat = 0
     var imageSize: CGSize = CGSize(width: 0, height: 0)
-    var pokemons: [Pokemon] = []
+    var pokemons: [Poke] = []
     var randomTargetIndex: Int = 0
     var score: Int = 0
     private let itemsPerRow: CGFloat = 2
