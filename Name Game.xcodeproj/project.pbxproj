@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E305F0F024780A0100D32AA0 /* azure-pipelines.yml in Resources */ = {isa = PBXBuildFile; fileRef = E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */; };
-		E30CDA2B247EA27D0029CC1E /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CDA2A247EA27D0029CC1E /* BaseTest.swift */; };
-		E30CDA2E247EA30E0029CC1E /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CDA2D247EA30E0029CC1E /* BaseScreen.swift */; };
-		E30CDA31247EA4900029CC1E /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CDA30247EA4900029CC1E /* HomeScreen.swift */; };
 		E31981632472CA43003B2C2E /* TimeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31981622472CA43003B2C2E /* TimeMode.swift */; };
 		E31981652472CFF9003B2C2E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */; };
 		E34B34F42470241E00B7A0D8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B34F32470241E00B7A0D8 /* Networking.swift */; };
@@ -22,8 +18,6 @@
 		E367F55A246F199A00E79B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E367F558246F199A00E79B28 /* Main.storyboard */; };
 		E367F55F246F199C00E79B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E367F55E246F199C00E79B28 /* Assets.xcassets */; };
 		E367F562246F199C00E79B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E367F560246F199C00E79B28 /* LaunchScreen.storyboard */; };
-		E367F56D246F199C00E79B28 /* Name_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367F56C246F199C00E79B28 /* Name_GameTests.swift */; };
-		E367F578246F199C00E79B28 /* HomeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367F577246F199C00E79B28 /* HomeTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "azure-pipelines.yml"; sourceTree = "<group>"; };
-		E30CDA2A247EA27D0029CC1E /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
-		E30CDA2D247EA30E0029CC1E /* BaseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
-		E30CDA30247EA4900029CC1E /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		E31981622472CA43003B2C2E /* TimeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMode.swift; sourceTree = "<group>"; };
 		E31981642472CFF9003B2C2E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E34B34F32470241E00B7A0D8 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -62,11 +52,7 @@
 		E367F561246F199C00E79B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E367F563246F199C00E79B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E367F568246F199C00E79B28 /* Name GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Name GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E367F56C246F199C00E79B28 /* Name_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name_GameTests.swift; sourceTree = "<group>"; };
-		E367F56E246F199C00E79B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E367F573246F199C00E79B28 /* Name GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Name GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E367F577246F199C00E79B28 /* HomeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTest.swift; sourceTree = "<group>"; };
-		E367F579246F199C00E79B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,24 +80,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E30CDA2C247EA2F80029CC1E /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				E30CDA2A247EA27D0029CC1E /* BaseTest.swift */,
-				E367F577246F199C00E79B28 /* HomeTest.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		E30CDA2F247EA31B0029CC1E /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				E30CDA2D247EA30E0029CC1E /* BaseScreen.swift */,
-				E30CDA30247EA4900029CC1E /* HomeScreen.swift */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
 		E34B34F52470242300B7A0D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,10 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				E367F551246F199A00E79B28 /* Name Game */,
-				E367F56B246F199C00E79B28 /* Name GameTests */,
-				E367F576246F199C00E79B28 /* Name GameUITests */,
 				E367F550246F199A00E79B28 /* Products */,
-				E305F0EF24780A0100D32AA0 /* azure-pipelines.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,25 +126,6 @@
 				E367F563246F199C00E79B28 /* Info.plist */,
 			);
 			path = "Name Game";
-			sourceTree = "<group>";
-		};
-		E367F56B246F199C00E79B28 /* Name GameTests */ = {
-			isa = PBXGroup;
-			children = (
-				E367F56C246F199C00E79B28 /* Name_GameTests.swift */,
-				E367F56E246F199C00E79B28 /* Info.plist */,
-			);
-			path = "Name GameTests";
-			sourceTree = "<group>";
-		};
-		E367F576246F199C00E79B28 /* Name GameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E30CDA2F247EA31B0029CC1E /* Screens */,
-				E30CDA2C247EA2F80029CC1E /* Tests */,
-				E367F579246F199C00E79B28 /* Info.plist */,
-			);
-			path = "Name GameUITests";
 			sourceTree = "<group>";
 		};
 		E367F585246F19C500E79B28 /* View */ = {
@@ -307,7 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E305F0F024780A0100D32AA0 /* azure-pipelines.yml in Resources */,
 				E367F562246F199C00E79B28 /* LaunchScreen.storyboard in Resources */,
 				E367F55F246F199C00E79B28 /* Assets.xcassets in Resources */,
 				E367F55A246F199A00E79B28 /* Main.storyboard in Resources */,
@@ -350,7 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E367F56D246F199C00E79B28 /* Name_GameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,10 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30CDA31247EA4900029CC1E /* HomeScreen.swift in Sources */,
-				E30CDA2B247EA27D0029CC1E /* BaseTest.swift in Sources */,
-				E367F578246F199C00E79B28 /* HomeTest.swift in Sources */,
-				E30CDA2E247EA30E0029CC1E /* BaseScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
